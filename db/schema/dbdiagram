@@ -1,0 +1,41 @@
+
+Table nodes as N {
+  id bigserial [pk]
+  parent_id bigint [ref: > N.id,note:"parent_id is null for root node"]
+  name varchar [not null]
+  is_dir boolean [not null, default: false]
+  filesize bigint
+  depth int [note:"depth starting from parent node (0)"]
+  lineage varchar [note:"used for breadcrumbs"]
+  owner bigint [ref: > A.id]
+  created_at timestamptz [not null, default: `now()`]
+
+  Indexes {
+    name
+  }
+}
+
+
+Table accounts as A {
+  id bigserial [pk]
+  name varchar [not null]
+  username varchar [not null]
+  email varchar [not null]
+  password varchar [not null,note:"hashed password"]
+  created_at timestamptz [not null, default: `now()`]
+  last_login timestamptz
+  Indexes {
+    username
+    name
+    email
+  }
+}
+
+Table links as L {
+  id bigserial [pk]
+  node bigint [ref: > N.id, not null]
+  link varchar [not null]
+  clicks int [default: 0]
+  password varchar
+  created_at timestamptz [not null, default: `now()`]
+}
