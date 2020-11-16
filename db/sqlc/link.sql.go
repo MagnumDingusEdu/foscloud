@@ -5,8 +5,18 @@ package db
 
 import (
 	"context"
-	"database/sql"
 )
+
+const countLinks = `-- name: CountLinks :one
+SELECT count(*) FROM links
+`
+
+func (q *Queries) CountLinks(ctx context.Context) (int64, error) {
+	row := q.db.QueryRowContext(ctx, countLinks)
+	var count int64
+	err := row.Scan(&count)
+	return count, err
+}
 
 const createLink = `-- name: CreateLink :one
 INSERT INTO links (node, link, password)
@@ -15,9 +25,9 @@ RETURNING id, node, link, clicks, password, created_at
 `
 
 type CreateLinkParams struct {
-	Node     int64          `json:"node"`
-	Link     string         `json:"link"`
-	Password sql.NullString `json:"password"`
+	Node     int64  `json:"node"`
+	Link     string `json:"link"`
+	Password string `json:"password"`
 }
 
 func (q *Queries) CreateLink(ctx context.Context, arg CreateLinkParams) (Link, error) {
@@ -116,9 +126,9 @@ RETURNING id, node, link, clicks, password, created_at
 `
 
 type UpdateLinkParams struct {
-	ID       int64          `json:"id"`
-	Link     string         `json:"link"`
-	Password sql.NullString `json:"password"`
+	ID       int64  `json:"id"`
+	Link     string `json:"link"`
+	Password string `json:"password"`
 }
 
 func (q *Queries) UpdateLink(ctx context.Context, arg UpdateLinkParams) (Link, error) {

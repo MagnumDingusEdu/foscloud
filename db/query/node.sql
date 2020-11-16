@@ -20,6 +20,9 @@ DELETE
 FROM nodes
 WHERE id = $1;
 
+-- name: CountNodes :one
+SELECT count(*) FROM nodes;
+
 
 
 

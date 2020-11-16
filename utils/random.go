@@ -50,3 +50,13 @@ func RandomEmail() string {
 func RandomPassword() string {
 	return HashAndSalt(RandomString(10))
 }
+
+// Generate a random link
+func RandomLink() string {
+	return "https://example.com/" + RandomString(6)
+}
+
+// Generate a random filesize
+func RandomFilesize() int64 {
+	return RandomInt(1,1000)
+}

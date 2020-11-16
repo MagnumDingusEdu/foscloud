@@ -26,6 +26,8 @@ DELETE
 FROM links
 WHERE id = $1;
 
+-- name: CountLinks :one
+SELECT count(*) FROM links;
 
 
 

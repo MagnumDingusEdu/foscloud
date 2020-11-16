@@ -24,8 +24,8 @@ CREATE TABLE "links" (
   "id" bigserial PRIMARY KEY,
   "node" bigint NOT NULL,
   "link" varchar NOT NULL,
-  "clicks" int DEFAULT 0,
-  "password" varchar,
+  "clicks" int DEFAULT 0 NOT NULL,
+  "password" varchar NOT NULL,
   "created_at" timestamptz NOT NULL DEFAULT (now())
 );
 

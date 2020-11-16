@@ -8,6 +8,17 @@ import (
 	"database/sql"
 )
 
+const countNodes = `-- name: CountNodes :one
+SELECT count(*) FROM nodes
+`
+
+func (q *Queries) CountNodes(ctx context.Context) (int64, error) {
+	row := q.db.QueryRowContext(ctx, countNodes)
+	var count int64
+	err := row.Scan(&count)
+	return count, err
+}
+
 const createNode = `-- name: CreateNode :one
 INSERT INTO nodes (parent_id, name, filesize, depth, lineage, owner)
 VALUES ($1, $2, $3, $4, $5, $6)

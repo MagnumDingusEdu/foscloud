@@ -19,12 +19,12 @@ type Account struct {
 }
 
 type Link struct {
-	ID        int64          `json:"id"`
-	Node      int64          `json:"node"`
-	Link      string         `json:"link"`
-	Clicks    sql.NullInt32  `json:"clicks"`
-	Password  sql.NullString `json:"password"`
-	CreatedAt time.Time      `json:"created_at"`
+	ID        int64     `json:"id"`
+	Node      int64     `json:"node"`
+	Link      string    `json:"link"`
+	Clicks    int32     `json:"clicks"`
+	Password  string    `json:"password"`
+	CreatedAt time.Time `json:"created_at"`
 }
 
 type Node struct {

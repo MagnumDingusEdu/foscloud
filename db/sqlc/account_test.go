@@ -128,6 +128,7 @@ func TestQueries_GetAccountForUpdate(t *testing.T) {
 }
 
 func TestQueries_ListAccounts(t *testing.T) {
+	// Proper listing
 	for i := 0; i < 10; i++ {
 		createRandomizedAccount(t)
 	}
@@ -144,4 +145,38 @@ func TestQueries_ListAccounts(t *testing.T) {
 	for _, account := range accounts {
 		require.NotEmpty(t, account)
 	}
+
+	count, err := testQueries.CountAccounts(context.Background())
+	require.NoError(t, err)
+
+	// Over row limit ( empty result )
+	args = ListAccountsParams{
+		Limit:  5,
+		Offset: int32(count),
+	}
+
+	accounts, err = testQueries.ListAccounts(context.Background(), args)
+	require.NoError(t, err)
+	require.Empty(t, accounts)
+
+	// invalid query
+	args = ListAccountsParams{
+		Limit:  -1,
+		Offset: -1,
+	}
+
+	accounts, err = testQueries.ListAccounts(context.Background(), args)
+	require.Error(t, err)
+	require.Empty(t, accounts)
 }
+
+func TestQueries_CountAccounts(t *testing.T) {
+	for i:=0; i<10; i++ {
+		createRandomizedAccount(t)
+	}
+
+	count, err := testQueries.CountAccounts(context.Background())
+	require.NoError(t, err)
+	require.GreaterOrEqual(t, count, int64(10))
+}
+

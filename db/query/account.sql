@@ -38,5 +38,5 @@ SET last_login = $2
 WHERE id = $1
 RETURNING *;
 
-
-
+-- name: CountAccounts :one
+SELECT count(*) FROM accounts;
