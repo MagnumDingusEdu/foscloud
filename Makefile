@@ -38,3 +38,6 @@ init_sqlc:
 
 generate_sqlc:
 	sqlc generate
+
+test:
+	go test -v -cover ./...

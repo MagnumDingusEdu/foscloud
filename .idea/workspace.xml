@@ -6,23 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6df4e090-0b4c-4d5a-88e0-6567deb95b18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/foscloud.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrations/000001_init_schema.down.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrations/000001_init_schema.up.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/query/account.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/query/link.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/query/node.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schema/dbdiagram" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/sqlc/account.sql.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/sqlc/db.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/sqlc/models.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sqlc.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.env.template" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +47,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="migratedown" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
