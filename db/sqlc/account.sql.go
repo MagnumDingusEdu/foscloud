@@ -5,21 +5,20 @@ package db
 
 import (
 	"context"
-	"database/sql"
+	"time"
 )
 
 const createAccount = `-- name: CreateAccount :one
-INSERT INTO accounts (name, username, email, password, last_login)
-VALUES ($1, $2, $3, $4, $5)
+INSERT INTO accounts (name, username, email, password)
+VALUES ($1, $2, $3, $4)
 RETURNING id, name, username, email, password, created_at, last_login
 `
 
 type CreateAccountParams struct {
-	Name      string       `json:"name"`
-	Username  string       `json:"username"`
-	Email     string       `json:"email"`
-	Password  string       `json:"password"`
-	LastLogin sql.NullTime `json:"last_login"`
+	Name     string `json:"name"`
+	Username string `json:"username"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (Account, error) {
@@ -28,7 +27,6 @@ func (q *Queries) CreateAccount(ctx context.Context, arg CreateAccountParams) (A
 		arg.Username,
 		arg.Email,
 		arg.Password,
-		arg.LastLogin,
 	)
 	var i Account
 	err := row.Scan(
@@ -185,8 +183,8 @@ RETURNING id, name, username, email, password, created_at, last_login
 `
 
 type UpdateLastLoginParams struct {
-	ID        int64        `json:"id"`
-	LastLogin sql.NullTime `json:"last_login"`
+	ID        int64     `json:"id"`
+	LastLogin time.Time `json:"last_login"`
 }
 
 func (q *Queries) UpdateLastLogin(ctx context.Context, arg UpdateLastLoginParams) (Account, error) {

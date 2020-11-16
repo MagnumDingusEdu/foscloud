@@ -19,7 +19,14 @@ status_postgres:
 
 recreate_db:
 	docker exec -it $(DB_CONT_NAME) dropdb -U $(DB_USER) $(DB_NAME)
-	docker exec -it $(DB_CONT_NAME) createdb -U $(DB_USER) $(DB_NAME) --username=$(DB_USER) --owner=$(DB_USER) $(DB_NAME)
+	docker exec -it $(DB_CONT_NAME) createdb --username $(DB_USER) --owner=$(DB_USER) $(DB_NAME)
+
+create_test_db:
+	docker exec -it $(DB_CONT_NAME) createdb --username $(DB_USER) --owner=$(DB_USER) $(TEST_DB_NAME)
+
+test_db_shell:
+	docker exec -it $(DB_CONT_NAME) psql $(TEST_DB_NAME) -U $(DB_USER)
+
 
 db_shell:
 	docker exec -it $(DB_CONT_NAME) psql $(DB_NAME) -U $(DB_USER)
@@ -32,6 +39,12 @@ migrateup:
 
 migratedown:
 	migrate -path db/migrations -database "postgresql://$(DB_USER):$(DB_PASS)@$(DB_BIND):$(DB_PORT)/$(DB_NAME)?sslmode=disable" -verbose down
+
+migrate_test_up:
+	migrate -path db/migrations -database "postgresql://$(DB_USER):$(DB_PASS)@$(DB_BIND):$(DB_PORT)/$(TEST_DB_NAME)?sslmode=disable" -verbose up
+
+migrate_test_down:
+	migrate -path db/migrations -database "postgresql://$(DB_USER):$(DB_PASS)@$(DB_BIND):$(DB_PORT)/$(TEST_DB_NAME)?sslmode=disable" -verbose down
 
 init_sqlc:
 	sqlc init

@@ -1,6 +1,6 @@
 -- name: CreateAccount :one
-INSERT INTO accounts (name, username, email, password, last_login)
-VALUES ($1, $2, $3, $4, $5)
+INSERT INTO accounts (name, username, email, password)
+VALUES ($1, $2, $3, $4)
 RETURNING *;
 
 -- name: GetAccount :one

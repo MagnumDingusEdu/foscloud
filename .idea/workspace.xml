@@ -6,10 +6,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6df4e090-0b4c-4d5a-88e0-6567deb95b18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.env.template" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/sqlc/account_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/sqlc/main_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/hash.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/random.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrations/000001_init_schema.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrations/000001_init_schema.up.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/query/account.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/query/account.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/account.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/account.sql.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/models.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/models.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +32,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Go File" />
+        <option value="Go Application" />
       </list>
     </option>
   </component>
@@ -43,24 +55,49 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="postgresql" />
-    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="DefaultGoTemplateProperty" value="Go Application" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/utils" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/utils" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Build.go build foscloud">
+    <configuration name="go build foscloud" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+      <module name="foscloud" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="foscloud" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="migratedown" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
       <makefile filename="$PROJECT_DIR$/Makefile" target="migratedown" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Go Build.go build foscloud" />
+      <item itemvalue="Makefile.migratedown" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Makefile.migratedown" />
@@ -81,6 +118,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -93,29 +131,29 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="330" y="389" key="#SQL_Dialects/0.0.1920.1080@0.0.1920.1080" timestamp="1605515635543" />
-    <state x="552" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605515611274">
+    <state x="552" y="204" width="1084" height="709" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605546631331">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="552" y="204" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605515611274" />
+    <state x="552" y="204" width="1084" height="709" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1605546631331" />
     <state x="705" y="335" width="514" height="418" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605515271676">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="705" y="335" width="514" height="418" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605515271676" />
-    <state width="1874" height="280" key="GridCell.Tab.0.bottom" timestamp="1605516023740">
+    <state width="1874" height="280" key="GridCell.Tab.0.bottom" timestamp="1605547860294">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605516023740" />
-    <state width="1874" height="280" key="GridCell.Tab.0.center" timestamp="1605516023740">
+    <state width="1874" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605547860294" />
+    <state width="1874" height="280" key="GridCell.Tab.0.center" timestamp="1605547860294">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="280" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605516023740" />
-    <state width="1874" height="280" key="GridCell.Tab.0.left" timestamp="1605516023739">
+    <state width="1874" height="280" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605547860294" />
+    <state width="1874" height="280" key="GridCell.Tab.0.left" timestamp="1605547860294">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="280" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605516023739" />
-    <state width="1874" height="280" key="GridCell.Tab.0.right" timestamp="1605516023740">
+    <state width="1874" height="280" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605547860294" />
+    <state width="1874" height="280" key="GridCell.Tab.0.right" timestamp="1605547860294">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1874" height="280" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605516023740" />
+    <state width="1874" height="280" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605547860294" />
   </component>
 </project>

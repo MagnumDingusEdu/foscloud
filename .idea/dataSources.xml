@@ -7,5 +7,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/foscloud</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="foscloudtest@localhost" uuid="e161389d-c407-4b44-b612-e40a0b1834d2">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/foscloudtest</jdbc-url>
+    </data-source>
   </component>
 </project>

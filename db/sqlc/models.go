@@ -13,9 +13,9 @@ type Account struct {
 	Username string `json:"username"`
 	Email    string `json:"email"`
 	// hashed password
-	Password  string       `json:"password"`
-	CreatedAt time.Time    `json:"created_at"`
-	LastLogin sql.NullTime `json:"last_login"`
+	Password  string    `json:"password"`
+	CreatedAt time.Time `json:"created_at"`
+	LastLogin time.Time `json:"last_login"`
 }
 
 type Link struct {
