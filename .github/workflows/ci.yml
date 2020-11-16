@@ -13,11 +13,11 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:12-alpine
+        image: postgres:13-alpine
         env:
           POSTGRES_PASSWORD: foscloud
           POSTGRES_USER: foscloud
-          POSTGRES_DB: foscloud
+          POSTGRES_DB: foscloudtest
 
         options: >-
           --health-cmd pg_isready
@@ -47,7 +47,7 @@ jobs:
         run: cp config.env.template config.env
 
       - name: Run migrations
-        run: make migrateup
+        run: make migrate_test_up
 
       - name: Test
         run: make test
