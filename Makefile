@@ -46,6 +46,9 @@ migrate_test_up:
 migrate_test_down:
 	migrate -path db/migrations -database "postgresql://$(DB_USER):$(DB_PASS)@$(DB_BIND):$(DB_PORT)/$(TEST_DB_NAME)?sslmode=disable" -verbose down
 
+migrate_test_force:
+	migrate -path db/migrations -database "postgresql://$(DB_USER):$(DB_PASS)@$(DB_BIND):$(DB_PORT)/$(TEST_DB_NAME)?sslmode=disable" -verbose force $(version)
+
 init_sqlc:
 	sqlc init
 

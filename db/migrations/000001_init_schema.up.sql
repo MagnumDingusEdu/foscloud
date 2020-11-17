@@ -29,11 +29,11 @@ CREATE TABLE "links" (
   "created_at" timestamptz NOT NULL DEFAULT (now())
 );
 
-ALTER TABLE "nodes" ADD FOREIGN KEY ("parent_id") REFERENCES "nodes" ("id");
+ALTER TABLE "nodes" ADD FOREIGN KEY ("parent_id") REFERENCES "nodes" ("id") ON DELETE CASCADE;
 
-ALTER TABLE "nodes" ADD FOREIGN KEY ("owner") REFERENCES "accounts" ("id");
+ALTER TABLE "nodes" ADD FOREIGN KEY ("owner") REFERENCES "accounts" ("id") ON DELETE CASCADE;
 
-ALTER TABLE "links" ADD FOREIGN KEY ("node") REFERENCES "nodes" ("id");
+ALTER TABLE "links" ADD FOREIGN KEY ("node") REFERENCES "nodes" ("id") ON DELETE CASCADE;
 
 CREATE INDEX ON "nodes" ("name");
 
@@ -50,3 +50,4 @@ COMMENT ON COLUMN "nodes"."depth" IS 'depth starting from parent node (0)';
 COMMENT ON COLUMN "nodes"."lineage" IS 'used for breadcrumbs';
 
 COMMENT ON COLUMN "accounts"."password" IS 'hashed password';
+

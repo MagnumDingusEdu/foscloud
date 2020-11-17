@@ -6,13 +6,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6df4e090-0b4c-4d5a-88e0-6567deb95b18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/server.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/sqlc/store.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/sqlc/store_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrations/000002_add_root_record.down.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrations/000002_add_root_record.up.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrations/000003_add_depth_trigger.down.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrations/000003_add_depth_trigger.up.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2/storage_v2/_src_/database/foscloudtest.vTaXQw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2/storage_v2/_src_/database/foscloudtest.vTaXQw/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/hash.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/hash.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrations/000001_init_schema.up.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrations/000001_init_schema.up.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,10 +52,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/utils" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/db/migrations" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/db/migrations" />
       <recent name="$PROJECT_DIR$/utils" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -130,22 +133,26 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="705" y="335" width="514" height="418" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1605515271676" />
-    <state width="1291" height="280" key="GridCell.Tab.0.bottom" timestamp="1605559132280">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1264" height="457" key="GridCell.Tab.0.bottom" timestamp="1605592695333">
+      <screen x="38" y="0" width="1882" height="1080" />
     </state>
-    <state width="1291" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605559132280" />
-    <state width="1291" height="280" key="GridCell.Tab.0.center" timestamp="1605559132280">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1291" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605589096220" />
+    <state width="1264" height="457" key="GridCell.Tab.0.bottom/38.0.1882.1080@38.0.1882.1080" timestamp="1605592695333" />
+    <state width="1264" height="457" key="GridCell.Tab.0.center" timestamp="1605592695333">
+      <screen x="38" y="0" width="1882" height="1080" />
     </state>
-    <state width="1291" height="280" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605559132280" />
-    <state width="1291" height="280" key="GridCell.Tab.0.left" timestamp="1605559132280">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1291" height="280" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605589096220" />
+    <state width="1264" height="457" key="GridCell.Tab.0.center/38.0.1882.1080@38.0.1882.1080" timestamp="1605592695333" />
+    <state width="1264" height="457" key="GridCell.Tab.0.left" timestamp="1605592695333">
+      <screen x="38" y="0" width="1882" height="1080" />
     </state>
-    <state width="1291" height="280" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605559132280" />
-    <state width="1291" height="280" key="GridCell.Tab.0.right" timestamp="1605559132280">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1291" height="280" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605589096220" />
+    <state width="1264" height="457" key="GridCell.Tab.0.left/38.0.1882.1080@38.0.1882.1080" timestamp="1605592695333" />
+    <state width="1264" height="457" key="GridCell.Tab.0.right" timestamp="1605592695333">
+      <screen x="38" y="0" width="1882" height="1080" />
     </state>
-    <state width="1291" height="280" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605559132280" />
+    <state width="1291" height="280" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605589096220" />
+    <state width="1264" height="457" key="GridCell.Tab.0.right/38.0.1882.1080@38.0.1882.1080" timestamp="1605592695333" />
     <state x="623" y="241" width="672" height="678" key="search.everywhere.popup" timestamp="1605557115232">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
