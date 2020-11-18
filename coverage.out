@@ -62,6 +62,12 @@ foscloud/db/sqlc/account.sql.go:159.37,161.3 1 0
 foscloud/db/sqlc/account.sql.go:162.35,164.3 1 0
 foscloud/db/sqlc/account.sql.go:183.96,202.2 4 1
 foscloud/db/sqlc/account.sql.go:216.100,229.2 4 1
+foscloud/db/sqlc/authtoken.sql.go:22.102,33.2 4 1
+foscloud/db/sqlc/authtoken.sql.go:41.77,44.2 2 1
+foscloud/db/sqlc/authtoken.sql.go:53.96,64.2 4 1
+foscloud/db/sqlc/authtoken.sql.go:73.86,84.2 4 1
+foscloud/db/sqlc/authtoken.sql.go:98.110,109.2 4 1
+foscloud/db/sqlc/authtoken.sql.go:123.112,134.2 4 1
 foscloud/db/sqlc/db.go:17.28,19.2 1 1
 foscloud/db/sqlc/db.go:25.47,29.2 1 1
 foscloud/db/sqlc/link.sql.go:14.66,19.2 4 1

@@ -50,16 +50,23 @@ func TestStore_RegisterDuplicate(t *testing.T) {
 	require.Empty(t, account2)
 }
 
-func TestStore_CheckPassword(t *testing.T) {
+func TestStore_LoginAccountTx(t *testing.T) {
 	store := NewStore(testDb)
 	account := createRandomizedAccount(t)
-	password, err := store.CheckPassword(context.Background(), CheckPasswordTx{
+	loginResult, err := store.LoginAccountTx(context.Background(), LoginAccountTxParams{
 		LoginID: account.Username,
 	})
 	require.NoError(t, err)
-	require.NotEmpty(t, password)
+	require.NotEmpty(t, loginResult)
 
-	password, err = store.CheckPassword(context.Background(), CheckPasswordTx{})
+	require.NotEmpty(t, loginResult.Account)
+	require.NotEmpty(t, loginResult.Authtoken)
+
+	require.Equal(t, loginResult.Account.ID, loginResult.Authtoken.Account)
+
+
+
+	loginResult, err = store.LoginAccountTx(context.Background(), LoginAccountTxParams{})
 	require.Error(t, err)
-	require.Empty(t, password)
+	require.Empty(t, loginResult)
 }

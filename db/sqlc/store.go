@@ -71,21 +71,43 @@ func (store *Store) RegisterAccount(ctx context.Context, arg RegisterTxParams) (
 	return account, err
 }
 
-type CheckPasswordTx struct {
+type LoginAccountTxParams struct {
 	LoginID  string `json:"username"`
 	Password string `json:"password"`
 }
 
-func (store *Store) CheckPassword(ctx context.Context, arg CheckPasswordTx) (string, error) {
-	var password string
+type LoginAccountTxResult struct {
+	Account   Account   `json:"account"`
+	Authtoken Authtoken `json:"authtoken"`
+}
+
+func (store *Store) LoginAccountTx(ctx context.Context, arg LoginAccountTxParams) (LoginAccountTxResult, error) {
+	var result LoginAccountTxResult
 
 	err := store.execTx(ctx, func(queries *Queries) error {
 		var err error
-		password, err = queries.GetAccountPassword(ctx, arg.LoginID)
+		result.Account, err = store.CheckAccount(ctx, arg.LoginID)
 		if err != nil {
 			return err
 		}
+		authtoken, err := store.GetAuthTokenByAccount(ctx, result.Account.ID)
+		if err != nil {
+			if err == sql.ErrNoRows {
+				result.Authtoken, err = store.CreateAuthToken(ctx, CreateAuthTokenParams{
+					Token:   utils.GenerateAuthToken(),
+					Account: result.Account.ID,
+				})
+				if err != nil {
+					return err
+				}
+			} else {
+				return err
+			}
+
+		} else {
+			result.Authtoken = authtoken
+		}
 		return nil
 	})
-	return password, err
+	return result, err
 }

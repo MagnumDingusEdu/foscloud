@@ -18,6 +18,14 @@ type Account struct {
 	LastLogin time.Time `json:"last_login"`
 }
 
+type Authtoken struct {
+	ID        int64     `json:"id"`
+	Token     string    `json:"token"`
+	Account   int64     `json:"account"`
+	CreatedAt time.Time `json:"created_at"`
+	LastUsed  time.Time `json:"last_used"`
+}
+
 type Link struct {
 	ID        int64     `json:"id"`
 	Node      int64     `json:"node"`

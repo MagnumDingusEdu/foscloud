@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	alphabet = "abcdefghijklmnopqrstuvwxz"
+	alphabet = "abcdefghijklmnopqrstuvwxz1234567890"
 )
 
 func init() {
@@ -59,4 +59,8 @@ func RandomLink() string {
 // Generate a random filesize
 func RandomFilesize() int64 {
 	return RandomInt(1,1000)
+}
+
+func GenerateAuthToken() string {
+	return RandomString(12)
 }

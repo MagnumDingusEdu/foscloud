@@ -6,23 +6,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6df4e090-0b4c-4d5a-88e0-6567deb95b18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/coverage.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrations/000004_add_unique_constraint.down.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrations/000004_add_unique_constraint.up.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/sqlc/db_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrations/000005_add_auth_tokens.down.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrations/000005_add_auth_tokens.up.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/query/authtoken.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/sqlc/authtoken.sql.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/sqlc/authtoken_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2/storage_v2/_src_/database/foscloud.q79uHQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2/storage_v2/_src_/database/foscloud.q79uHQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2/storage_v2/_src_/database/foscloudtest.vTaXQw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2/storage_v2/_src_/database/foscloudtest.vTaXQw/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2/storage_v2/_src_/database/foscloudtest.vTaXQw/schema/public.abK9xQ.zip" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e161389d-c407-4b44-b612-e40a0b1834d2/storage_v2/_src_/database/foscloudtest.vTaXQw/schema/public.abK9xQ.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage.out" beforeDir="false" afterPath="$PROJECT_DIR$/coverage.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/query/account.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/query/account.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/query/node.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/query/node.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/sqlc/account.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/account.sql.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/sqlc/account_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/account_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/sqlc/node.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/node.sql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/sqlc/node_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/node_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/models.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/models.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/sqlc/store.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/store.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/sqlc/store_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/store_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/random.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/random.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,11 +62,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/db/migrations" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/db/sqlc" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/db/sqlc" />
       <recent name="$PROJECT_DIR$/db/migrations" />
       <recent name="$PROJECT_DIR$/utils" />
       <recent name="$PROJECT_DIR$" />

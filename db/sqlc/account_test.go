@@ -180,12 +180,15 @@ func TestQueries_CountAccounts(t *testing.T) {
 	require.GreaterOrEqual(t, count, int64(10))
 }
 
-func TestQueries_GetAccountPassword(t *testing.T) {
+func TestQueries_CheckAccount(t *testing.T) {
 	account := createRandomizedAccount(t)
 
-	password, err := testQueries.GetAccountPassword(context.Background(), account.Username)
+	account2, err := testQueries.CheckAccount(context.Background(), account.Username)
 	require.NoError(t, err)
-	require.NotEmpty(t, password)
-	require.Equal(t, account.Password, password)
+	require.NotEmpty(t, account2)
+	require.Equal(t, account.ID, account2.ID)
+	require.Equal(t, account.Password, account2.Password)
+	require.Equal(t, account.Username, account2.Username)
+	require.Equal(t, account.Email, account2.Email)
 }
 

@@ -8,6 +8,28 @@ import (
 	"time"
 )
 
+const checkAccount = `-- name: CheckAccount :one
+SELECT id, name, username, email, password, created_at, last_login
+FROM accounts
+WHERE (username = $1 OR email = $1)
+LIMIT 1
+`
+
+func (q *Queries) CheckAccount(ctx context.Context, username string) (Account, error) {
+	row := q.db.QueryRowContext(ctx, checkAccount, username)
+	var i Account
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Username,
+		&i.Email,
+		&i.Password,
+		&i.CreatedAt,
+		&i.LastLogin,
+	)
+	return i, err
+}
+
 const countAccounts = `-- name: CountAccounts :one
 SELECT count(*)
 FROM accounts
@@ -106,20 +128,6 @@ func (q *Queries) GetAccountForUpdate(ctx context.Context, id int64) (Account, e
 		&i.LastLogin,
 	)
 	return i, err
-}
-
-const getAccountPassword = `-- name: GetAccountPassword :one
-SELECT password
-FROM accounts
-WHERE (username = $1 OR email = $1)
-LIMIT 1
-`
-
-func (q *Queries) GetAccountPassword(ctx context.Context, username string) (string, error) {
-	row := q.db.QueryRowContext(ctx, getAccountPassword, username)
-	var password string
-	err := row.Scan(&password)
-	return password, err
 }
 
 const listAccounts = `-- name: ListAccounts :many

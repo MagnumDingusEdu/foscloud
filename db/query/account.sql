@@ -42,8 +42,8 @@ RETURNING *;
 SELECT count(*)
 FROM accounts;
 
--- name: GetAccountPassword :one
-SELECT password
+-- name: CheckAccount :one
+SELECT *
 FROM accounts
 WHERE (username = $1 OR email = $1)
 LIMIT 1;

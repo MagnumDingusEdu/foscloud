@@ -61,3 +61,6 @@ test:
 cover_report:
 	go test -v -cover ./...  -coverprofile=coverage.out
 	go tool cover -html=coverage.out
+
+clear_test_cache:
+	go clean -testcache
