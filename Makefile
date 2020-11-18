@@ -57,3 +57,7 @@ generate_sqlc:
 
 test:
 	go test -v -cover ./...
+
+cover_report:
+	go test -v -cover ./...  -coverprofile=coverage.out
+	go tool cover -html=coverage.out

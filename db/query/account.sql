@@ -39,4 +39,11 @@ WHERE id = $1
 RETURNING *;
 
 -- name: CountAccounts :one
-SELECT count(*) FROM accounts;
+SELECT count(*)
+FROM accounts;
+
+-- name: GetAccountPassword :one
+SELECT password
+FROM accounts
+WHERE (username = $1 OR email = $1)
+LIMIT 1;

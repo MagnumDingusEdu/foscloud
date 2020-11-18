@@ -70,3 +70,22 @@ func (store *Store) RegisterAccount(ctx context.Context, arg RegisterTxParams) (
 	})
 	return account, err
 }
+
+type CheckPasswordTx struct {
+	LoginID  string `json:"username"`
+	Password string `json:"password"`
+}
+
+func (store *Store) CheckPassword(ctx context.Context, arg CheckPasswordTx) (string, error) {
+	var password string
+
+	err := store.execTx(ctx, func(queries *Queries) error {
+		var err error
+		password, err = queries.GetAccountPassword(ctx, arg.LoginID)
+		if err != nil {
+			return err
+		}
+		return nil
+	})
+	return password, err
+}

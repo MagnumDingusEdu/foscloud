@@ -3,6 +3,7 @@ package db
 import (
 	"context"
 	"database/sql"
+	"fmt"
 	"foscloud/utils"
 	"github.com/stretchr/testify/require"
 	"testing"
@@ -10,12 +11,15 @@ import (
 )
 
 func createRandomizedNode(t *testing.T) Node {
+	return createSpecificNode(t, 1)
+}
+
+func createSpecificNode(t *testing.T, parentId int64) Node {
 	args := CreateNodeParams{
-		ParentID: sql.NullInt64{},
+		ParentID: sql.NullInt64{Int64: parentId, Valid: true},
 		Name:     utils.RandomName(),
-		Filesize: sql.NullInt64{},
-		Depth:    sql.NullInt32{},
-		Lineage:  sql.NullString{},
+		IsDir:    false,
+		Filesize: sql.NullInt64{Int64: utils.RandomFilesize(), Valid: true},
 		Owner:    sql.NullInt64{},
 	}
 
@@ -26,8 +30,8 @@ func createRandomizedNode(t *testing.T) Node {
 	require.NotEmpty(t, node.ID)
 	require.Equal(t, args.Name, node.Name)
 	require.Equal(t, args.Filesize, node.Filesize)
-	require.Equal(t, args.Depth, node.Depth)
-	require.Equal(t, args.Lineage, node.Lineage)
+	require.Equal(t, args.ParentID, node.ParentID)
+	require.Equal(t, args.IsDir, node.IsDir)
 	require.Equal(t, args.Owner, node.Owner)
 	require.Equal(t, false, node.IsDir)
 	return node
@@ -48,8 +52,8 @@ func TestQueries_GetNode(t *testing.T) {
 	require.Equal(t, node1.ID, node2.ID)
 	require.Equal(t, node1.IsDir, node2.IsDir)
 	require.Equal(t, node1.Owner, node2.Owner)
-	require.Equal(t, node1.Lineage, node2.Lineage)
-	require.Equal(t, node1.Depth, node2.Depth)
+	require.NotEmpty(t, node2.Lineage) // Lineage is generated later
+	require.NotEmpty(t, node2.Depth)   // Depth is generated later
 	require.Equal(t, node1.Filesize, node2.Filesize)
 	require.Equal(t, node1.Name, node2.Name)
 	require.Equal(t, node1.ParentID, node2.ParentID)
@@ -123,3 +127,30 @@ func TestQueries_CountNodes(t *testing.T) {
 	require.GreaterOrEqual(t, count, int64(10))
 }
 
+func TestQueries_ListChildNodes(t *testing.T) {
+	var err error
+	parentNode := createSpecificNode(t, 1)
+	parentNode, err = testQueries.GetNode(context.Background(), parentNode.ID)
+
+	require.NoError(t, err)
+	require.NotEmpty(t, parentNode)
+
+	for i := 0; i < 10; i++ {
+		createSpecificNode(t, parentNode.ID)
+	}
+
+	children, err := testQueries.ListChildNodes(context.Background(), sql.NullInt64{
+		Int64: parentNode.ID,
+		Valid: true,
+	})
+
+	require.NoError(t, err)
+	require.Len(t, children, 10)
+
+	for _, child := range children {
+		require.NotEmpty(t, child)
+
+		require.Equal(t, parentNode.Depth.Int32+1, child.Depth.Int32)
+		require.Equal(t, fmt.Sprintf("%v%v/", parentNode.Lineage.String, child.ID), child.Lineage.String)
+	}
+}

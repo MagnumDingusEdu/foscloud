@@ -20,27 +20,25 @@ func (q *Queries) CountNodes(ctx context.Context) (int64, error) {
 }
 
 const createNode = `-- name: CreateNode :one
-INSERT INTO nodes (parent_id, name, filesize, depth, lineage, owner)
-VALUES ($1, $2, $3, $4, $5, $6)
+INSERT INTO nodes (parent_id, name, is_dir, filesize, owner)
+VALUES ($1, $2, $3, $4, $5)
 RETURNING id, parent_id, name, is_dir, filesize, depth, lineage, owner, created_at
 `
 
 type CreateNodeParams struct {
-	ParentID sql.NullInt64  `json:"parent_id"`
-	Name     string         `json:"name"`
-	Filesize sql.NullInt64  `json:"filesize"`
-	Depth    sql.NullInt32  `json:"depth"`
-	Lineage  sql.NullString `json:"lineage"`
-	Owner    sql.NullInt64  `json:"owner"`
+	ParentID sql.NullInt64 `json:"parent_id"`
+	Name     string        `json:"name"`
+	IsDir    bool          `json:"is_dir"`
+	Filesize sql.NullInt64 `json:"filesize"`
+	Owner    sql.NullInt64 `json:"owner"`
 }
 
 func (q *Queries) CreateNode(ctx context.Context, arg CreateNodeParams) (Node, error) {
 	row := q.db.QueryRowContext(ctx, createNode,
 		arg.ParentID,
 		arg.Name,
+		arg.IsDir,
 		arg.Filesize,
-		arg.Depth,
-		arg.Lineage,
 		arg.Owner,
 	)
 	var i Node
@@ -91,6 +89,46 @@ func (q *Queries) GetNode(ctx context.Context, id int64) (Node, error) {
 		&i.CreatedAt,
 	)
 	return i, err
+}
+
+const listChildNodes = `-- name: ListChildNodes :many
+SELECT id, parent_id, name, is_dir, filesize, depth, lineage, owner, created_at
+FROM nodes
+WHERE parent_id = $1
+ORDER BY id
+`
+
+func (q *Queries) ListChildNodes(ctx context.Context, parentID sql.NullInt64) ([]Node, error) {
+	rows, err := q.db.QueryContext(ctx, listChildNodes, parentID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	items := []Node{}
+	for rows.Next() {
+		var i Node
+		if err := rows.Scan(
+			&i.ID,
+			&i.ParentID,
+			&i.Name,
+			&i.IsDir,
+			&i.Filesize,
+			&i.Depth,
+			&i.Lineage,
+			&i.Owner,
+			&i.CreatedAt,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Close(); err != nil {
+		return nil, err
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
 }
 
 const listNodes = `-- name: ListNodes :many

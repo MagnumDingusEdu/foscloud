@@ -9,7 +9,8 @@ import (
 )
 
 const countAccounts = `-- name: CountAccounts :one
-SELECT count(*) FROM accounts
+SELECT count(*)
+FROM accounts
 `
 
 func (q *Queries) CountAccounts(ctx context.Context) (int64, error) {
@@ -105,6 +106,20 @@ func (q *Queries) GetAccountForUpdate(ctx context.Context, id int64) (Account, e
 		&i.LastLogin,
 	)
 	return i, err
+}
+
+const getAccountPassword = `-- name: GetAccountPassword :one
+SELECT password
+FROM accounts
+WHERE (username = $1 OR email = $1)
+LIMIT 1
+`
+
+func (q *Queries) GetAccountPassword(ctx context.Context, username string) (string, error) {
+	row := q.db.QueryRowContext(ctx, getAccountPassword, username)
+	var password string
+	err := row.Scan(&password)
+	return password, err
 }
 
 const listAccounts = `-- name: ListAccounts :many

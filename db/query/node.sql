@@ -1,7 +1,13 @@
 -- name: CreateNode :one
-INSERT INTO nodes (parent_id, name, filesize, depth, lineage, owner)
-VALUES ($1, $2, $3, $4, $5, $6)
+INSERT INTO nodes (parent_id, name, is_dir, filesize, owner)
+VALUES ($1, $2, $3, $4, $5)
 RETURNING *;
+
+-- name: ListChildNodes :many
+SELECT *
+FROM nodes
+WHERE parent_id = $1
+ORDER BY id;
 
 -- name: GetNode :one
 SELECT *
@@ -22,7 +28,5 @@ WHERE id = $1;
 
 -- name: CountNodes :one
 SELECT count(*) FROM nodes;
-
-
 
 
