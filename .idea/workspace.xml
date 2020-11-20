@@ -6,18 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6df4e090-0b4c-4d5a-88e0-6567deb95b18" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/account.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e3b06154-f6a4-4023-8205-bd8c7de5f2d5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e3b06154-f6a4-4023-8205-bd8c7de5f2d5.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e3b06154-f6a4-4023-8205-bd8c7de5f2d5/storage_v2/_src_/database/foscloud.q79uHQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/e3b06154-f6a4-4023-8205-bd8c7de5f2d5/storage_v2/_src_/database/foscloud.q79uHQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/api/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/coverage.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/query/account.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/query/account.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/sqlc/account.sql.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/account.sql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/sqlc/store.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/store.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/sqlc/store_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/db/sqlc/store_test.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,31 +133,31 @@
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
     <state x="743" y="284" width="440" height="487" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1605852984300" />
-    <state width="1874" height="268" key="GridCell.Tab.0.bottom" timestamp="1605858144608">
+    <state width="1874" height="268" key="GridCell.Tab.0.bottom" timestamp="1605858385937">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="268" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1605858144608" />
+    <state width="1874" height="268" key="GridCell.Tab.0.bottom/0.0.1920.1044@0.0.1920.1044" timestamp="1605858385937" />
     <state width="1291" height="439" key="GridCell.Tab.0.bottom/0.0.1920.1046@0.0.1920.1046" timestamp="1605672387662" />
     <state width="1291" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1605589096220" />
     <state width="1264" height="457" key="GridCell.Tab.0.bottom/38.0.1882.1080@38.0.1882.1080" timestamp="1605592917035" />
-    <state width="1874" height="268" key="GridCell.Tab.0.center" timestamp="1605858144608">
+    <state width="1874" height="268" key="GridCell.Tab.0.center" timestamp="1605858385937">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="268" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1605858144608" />
+    <state width="1874" height="268" key="GridCell.Tab.0.center/0.0.1920.1044@0.0.1920.1044" timestamp="1605858385937" />
     <state width="1291" height="439" key="GridCell.Tab.0.center/0.0.1920.1046@0.0.1920.1046" timestamp="1605672387662" />
     <state width="1291" height="280" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1605589096220" />
     <state width="1264" height="457" key="GridCell.Tab.0.center/38.0.1882.1080@38.0.1882.1080" timestamp="1605592917035" />
-    <state width="1874" height="268" key="GridCell.Tab.0.left" timestamp="1605858144608">
+    <state width="1874" height="268" key="GridCell.Tab.0.left" timestamp="1605858385937">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="268" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1605858144608" />
+    <state width="1874" height="268" key="GridCell.Tab.0.left/0.0.1920.1044@0.0.1920.1044" timestamp="1605858385937" />
     <state width="1291" height="439" key="GridCell.Tab.0.left/0.0.1920.1046@0.0.1920.1046" timestamp="1605672387662" />
     <state width="1291" height="280" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1605589096220" />
     <state width="1264" height="457" key="GridCell.Tab.0.left/38.0.1882.1080@38.0.1882.1080" timestamp="1605592917035" />
-    <state width="1874" height="268" key="GridCell.Tab.0.right" timestamp="1605858144608">
+    <state width="1874" height="268" key="GridCell.Tab.0.right" timestamp="1605858385937">
       <screen x="0" y="0" width="1920" height="1044" />
     </state>
-    <state width="1874" height="268" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1605858144608" />
+    <state width="1874" height="268" key="GridCell.Tab.0.right/0.0.1920.1044@0.0.1920.1044" timestamp="1605858385937" />
     <state width="1291" height="439" key="GridCell.Tab.0.right/0.0.1920.1046@0.0.1920.1046" timestamp="1605672387662" />
     <state width="1291" height="280" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1605589096220" />
     <state width="1264" height="457" key="GridCell.Tab.0.right/38.0.1882.1080@38.0.1882.1080" timestamp="1605592917035" />
