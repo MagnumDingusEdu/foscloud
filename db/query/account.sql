@@ -9,6 +9,12 @@ FROM accounts
 WHERE id = $1
 LIMIT 1;
 
+-- name: GetAccountByUsername :one
+SELECT *
+FROM accounts
+WHERE username = $1
+LIMIT 1;
+
 -- name: GetAccountForUpdate :one
 SELECT *
 FROM accounts

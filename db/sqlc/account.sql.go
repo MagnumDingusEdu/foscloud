@@ -108,6 +108,28 @@ func (q *Queries) GetAccount(ctx context.Context, id int64) (Account, error) {
 	return i, err
 }
 
+const getAccountByUsername = `-- name: GetAccountByUsername :one
+SELECT id, name, username, email, password, created_at, last_login
+FROM accounts
+WHERE username = $1
+LIMIT 1
+`
+
+func (q *Queries) GetAccountByUsername(ctx context.Context, username string) (Account, error) {
+	row := q.db.QueryRowContext(ctx, getAccountByUsername, username)
+	var i Account
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Username,
+		&i.Email,
+		&i.Password,
+		&i.CreatedAt,
+		&i.LastLogin,
+	)
+	return i, err
+}
+
 const getAccountForUpdate = `-- name: GetAccountForUpdate :one
 SELECT id, name, username, email, password, created_at, last_login
 FROM accounts

@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	"foscloud/utils"
+	"time"
 )
 
 // store provides all functions
@@ -19,6 +20,14 @@ func NewStore(db *sql.DB) *Store {
 		Queries: New(db),
 		db:      db,
 	}
+}
+
+type IncorrectCredentialsError struct {
+	err error
+}
+
+func (i IncorrectCredentialsError) Error() string {
+	return fmt.Sprintf("The given credentials are incorrect.")
 }
 
 // Executes a function within a database transaction
@@ -88,7 +97,23 @@ func (store *Store) LoginAccountTx(ctx context.Context, arg LoginAccountTxParams
 		var err error
 		result.Account, err = store.CheckAccount(ctx, arg.LoginID)
 		if err != nil {
+			if err == sql.ErrNoRows {
+				if err, ok := err.(*IncorrectCredentialsError); ok {
+					return err
+				} else {
+					return err
+				}
+			}
 			return err
+		}
+		_, err = utils.CheckPassword(result.Account.Password, []byte(arg.Password))
+		if err != nil {
+			if err, ok := err.(*IncorrectCredentialsError); ok {
+				return err
+			} else {
+				return err
+			}
+
 		}
 		authtoken, err := store.GetAuthTokenByAccount(ctx, result.Account.ID)
 		if err != nil {
@@ -106,6 +131,13 @@ func (store *Store) LoginAccountTx(ctx context.Context, arg LoginAccountTxParams
 
 		} else {
 			result.Authtoken = authtoken
+		}
+		_, err = store.UpdateLastLogin(ctx, UpdateLastLoginParams{
+			ID:        result.Account.ID,
+			LastLogin: time.Now(),
+		})
+		if err != nil {
+			return err
 		}
 		return nil
 	})
